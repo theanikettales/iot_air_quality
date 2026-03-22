@@ -107,6 +107,7 @@ def export_html_report(node_id: str, days: int, outfile: str):
   <div class="stat"><div class="stat-val">{avg_pm25}</div><div class="stat-lbl">Avg PM2.5 µg/m³</div></div>
 </div>
 
+
 <div class="chart-box">
   <h2>AQI Over Time</h2>
   <canvas id="c1"></canvas>
