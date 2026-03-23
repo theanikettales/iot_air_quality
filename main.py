@@ -11,7 +11,6 @@ from loguru import logger
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-
 def parse_args():
     p = argparse.ArgumentParser(description="IoT AQMS")
     p.add_argument("--mode", choices=["web","simulate","seed","train","test"],
