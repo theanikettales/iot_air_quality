@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 # ──────────────────────────────────────────────
 #  AQI Breakpoints (US EPA Standard)
 # ──────────────────────────────────────────────
