@@ -3,7 +3,6 @@ sensors/simulator.py
 Simulates multiple IoT sensor nodes (ESP32 + MQ-135/7, PMS5003, DHT22, GPS).
 Publishes realistic time-varying readings via MQTT or directly to the DB.
 """
-
 import json
 import math
 import random
@@ -27,8 +26,6 @@ SENSOR_NODES = [
     {"node_id": "NODE_004", "name": "Highway Corridor – West",    "lat": 28.4680, "lon": 77.0150, "pollution_factor": 1.5},
     {"node_id": "NODE_005", "name": "Hospital Zone – South",      "lat": 28.4450, "lon": 77.0270, "pollution_factor": 0.6},
 ]
-
-
 class SensorSimulator:
     """
     Simulates realistic air quality readings with:

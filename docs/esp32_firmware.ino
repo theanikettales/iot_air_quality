@@ -2,7 +2,6 @@
  * esp32_firmware.ino
  * IoT Air Quality Monitoring System – ESP32 Firmware
  * Team 7 · K.R. Mangalam University
- *
  * Hardware:
  *   - ESP32 Dev Module
  *   - MQ-135 → GPIO34 (ADC1_CH6)
