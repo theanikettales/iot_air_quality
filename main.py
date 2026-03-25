@@ -29,6 +29,7 @@ def main():
         from models import init_db
         init_db()
 
+
         from dashboard.app import app, socketio, start_simulator, CONFIG
         pub = start_simulator()
 
