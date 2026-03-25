@@ -21,7 +21,6 @@ def parse_args():
     p.add_argument("--node",  type=str, default=None, help="Node ID to target")
     return p.parse_args()
 
-
 def main():
     args = parse_args()
 
@@ -86,7 +85,6 @@ def main():
             cwd=os.path.dirname(__file__)
         )
         sys.exit(ret.returncode)
-
 
 if __name__ == "__main__":
     main() 
