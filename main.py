@@ -33,6 +33,7 @@ def main():
         from dashboard.app import app, socketio, start_simulator, CONFIG
         pub = start_simulator()
 
+
         logger.info(f"➜  Dashboard:  http://localhost:{args.port}")
         logger.info(f"➜  API status: http://localhost:{args.port}/api/status")
 
