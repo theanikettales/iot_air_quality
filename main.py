@@ -78,6 +78,7 @@ def main():
         else:
             logger.success(f"Model trained – MAE={result['mae']}  R²={result['r2']}")
 
+
     elif args.mode == "test":
         import subprocess
         ret = subprocess.run(
