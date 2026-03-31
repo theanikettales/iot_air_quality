@@ -43,6 +43,7 @@ def main():
                          debug=False, use_reloader=False)
         except KeyboardInterrupt:
             pub.stop()
+            
             logger.info("Shutdown complete.")
 
     elif args.mode == "simulate":
