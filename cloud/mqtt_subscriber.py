@@ -16,6 +16,7 @@ from utils.aqi_calculator import compute_aqi
 
 
 
+
 class MQTTSubscriber:
     """
     Subscribes to  aqms/sensors/+/data
