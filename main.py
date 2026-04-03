@@ -47,6 +47,7 @@ def main():
             logger.info("Shutdown complete.")
 
  
+ 
     elif args.mode == "simulate":
         logger.info("🔬 Running sensor simulation (Ctrl+C to stop)…")
         from sensors.simulator import create_simulators, MQTTSensorPublisher
