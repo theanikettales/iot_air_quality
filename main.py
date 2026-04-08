@@ -37,13 +37,19 @@ def main():
         logger.info(f"➜  Dashboard:  http://localhost:{args.port}")
         logger.info(f"➜  API status: http://localhost:{args.port}/api/status")
 
+
         try:
             socketio.run(app, host="0.0.0.0", port=args.port,
                          debug=False, use_reloader=False)
         except KeyboardInterrupt:
             pub.stop()
+            
             logger.info("Shutdown complete.")
 
+  
+  
+  
+ 
     elif args.mode == "simulate":
         logger.info("🔬 Running sensor simulation (Ctrl+C to stop)…")
         from sensors.simulator import create_simulators, MQTTSensorPublisher
