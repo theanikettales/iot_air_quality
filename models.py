@@ -14,7 +14,8 @@ from config import CONFIG
  
 
 Base = declarative_base()
-
+ 
+ 
 
 class SensorNode(Base):
     """Represents a physical IoT sensor deployment node."""
