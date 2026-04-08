@@ -10,6 +10,8 @@ from sqlalchemy import (
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from config import CONFIG
 
+ 
+
 Base = declarative_base()
 
 
