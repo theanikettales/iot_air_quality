@@ -1,2 +1,1 @@
-import streamlit as st
-# run:  streamlit run app.py #
+streamlit run app.py
