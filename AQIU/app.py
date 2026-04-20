@@ -1,11 +1,5 @@
-"""
-Usage:
-    streamlit run app.py
-"""
-
-
-
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import time
@@ -112,8 +106,6 @@ alert_pm25 = st.sidebar.number_input("PM2.5 Alert Level", value=55.0)
 st.title("☁️ IoT-Enabled Air Quality Monitoring System")
 st.markdown("Real-time monitoring, visualization, and alerting for environmental health.")
 
-st.link_button("📊 Open AQI Dashboard", "http://127.0.0.1:3000/AQI_dasboard.html")
-
 # Generate/Fetch new data
 new_data = generate_sensor_data(selected_location)
 new_row = pd.DataFrame([new_data])
@@ -182,6 +174,13 @@ if len(loc_history) > 1:
         st.plotly_chart(fig_pm, use_container_width=True)
 else:
     st.info("Gathering data to plot trends. Please wait for the next reading...")
+
+st.markdown("---")
+
+# --- Live Sensor Feed (Embedded Dashboard) ---
+st.subheader("🌐 Live Sensor Feed")
+st.markdown("Real-time AQI readings streamed directly from the hardware sensor node.")
+components.iframe("http://127.0.0.1:3000", height=550, scrolling=True)
 
 st.markdown("---")
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AQI Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    .card {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      display: inline-block;
+      min-width: 220px;
+    }
+
+    canvas {
+      max-width: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🌫️ AQI Monitoring System</h1>
+
+<div id="card" class="card">
+  <h2 id="status">--</h2>
+  <p>AQI: <span id="aqi">--</span></p>
+  <p>Raw: <span id="raw">--</span></p>
+</div>
+
+<h3>📈 Live AQI Graph</h3>
+<canvas id="chart"></canvas>
+
+<script>
+const API = "http://127.0.0.1:5000/data";
+
+let points = [];
+
+function status(aqi){
+  if (aqi <= 50) return "Good";
+  else if (aqi <= 100) return "Satisfactory";
+  else if (aqi <= 200) return "Moderate";
+  else if (aqi <= 300) return "Poor";
+  else return "Severe";
+}
+
+function color(aqi){
+  if (aqi <= 50) return "#2ecc71";
+  else if (aqi <= 100) return "#a3e635";
+  else if (aqi <= 200) return "#f1c40f";
+  else if (aqi <= 300) return "#e67e22";
+  else return "#e74c3c";
+}
+
+const ctx = document.getElementById('chart');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: { labels: [], datasets: [{ label:'AQI', data:[], borderWidth:2 }] }
+});
+
+setInterval(async ()=>{
+  try{
+    const res = await fetch(API);
+    const d = await res.json();
+
+    document.getElementById("aqi").innerText = d.aqi;
+    document.getElementById("raw").innerText = d.raw;
+    document.getElementById("status").innerText = status(d.aqi);
+
+    const c = color(d.aqi);
+    document.getElementById("card").style.background = c;
+
+    if (points.length > 20) points.shift();
+    points.push(d.aqi);
+
+    chart.data.labels = points.map((_,i)=>i);
+    chart.data.datasets[0].data = points;
+    chart.update();
+
+  }catch(e){
+    console.log("Error:", e);
+  }
+}, 2000);
+</script>
+
+</body>
+</html>
